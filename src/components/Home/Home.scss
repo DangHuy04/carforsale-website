@@ -1,0 +1,700 @@
+.vinfast-home {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  // Hero Section
+  .hero-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      overflow: hidden;
+
+      .hero-video-element {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        
+        // Đảm bảo video không có controls
+        &::-webkit-media-controls {
+          display: none !important;
+        }
+        
+        &::-webkit-media-controls-panel {
+          display: none !important;
+        }
+        
+        &::-webkit-media-controls-play-button {
+          display: none !important;
+        }
+        
+        &::-webkit-media-controls-start-playback-button {
+          display: none !important;
+        }
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 30px 25px;
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .hero-text {
+      color: white;
+      text-align: center;
+    }
+
+    .hero-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      color: white !important;
+      font-size: 2.5rem !important;
+      font-weight: 700 !important;
+      margin: 0 0 20px 0 !important;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      line-height: 1.2 !important;
+    }
+
+    .hero-slogan {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 1.8rem !important;
+      font-weight: 300 !important;
+      margin: 20px 0 40px 0 !important;
+    }
+
+    .hero-button {
+      background: #2c3e50;
+      border-color: #2c3e50;
+      border-radius: 20px;
+      height: 45px;
+      font-size: 14px;
+      padding: 0 25px;
+      box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4);
+      font-weight: 600;
+
+      &:hover {
+        background: #34495e;
+        border-color: #34495e;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(44, 62, 80, 0.5);
+      }
+    }
+  }
+
+  // Car Models Carousel
+  .car-models-carousel {
+    background: #f8f9fa;
+    padding: 60px 0 0 0;
+    position: relative;
+
+    .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 120px;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #e0e6ed;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      color: #333;
+
+      &:hover {
+        background: white;
+        border-color: #ccc;
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      &.carousel-arrow-left {
+        left: 20px;
+      }
+
+      &.carousel-arrow-right {
+        right: 20px;
+      }
+    }
+
+    .car-carousel {
+      .slick-dots {
+        display: none !important;
+      }
+    }
+
+    .car-slide {
+      padding: 0 20px;
+      outline: none;
+    }
+
+    .car-slide-container {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      height: 600px;
+    }
+
+    .car-image-full {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      
+      .car-full-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        background: #ffffff;
+      }
+    }
+
+
+
+    // Responsive
+    @media (max-width: 768px) {
+      .carousel-container {
+        padding: 0 60px;
+      }
+      
+      .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        
+        &.carousel-arrow-left {
+          left: 10px;
+        }
+        
+        &.carousel-arrow-right {
+          right: 10px;
+        }
+      }
+      
+      .car-slide-container {
+        height: 450px;
+      }
+    }
+  }
+
+  // Car Specifications Section
+  .car-specifications {
+    background: #ffffff;
+    padding: 0;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .divider-line {
+      width: 100%;
+      height: 1px;
+      background: #e0e6ed;
+      margin-bottom: 0px;
+    }
+
+    .specs-content {
+      padding-bottom: 60px;
+    }
+
+    .spec-item {
+      text-align: center;
+      
+      .spec-label {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 8px;
+        font-weight: 400;
+      }
+      
+      .spec-value {
+        color: #333;
+        font-size: 18px;
+        font-weight: 600;
+        
+        &.price {
+          color: #4285f4;
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .action-buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      
+      .order-btn {
+        background: #4285f4;
+        border: 2px solid #4285f4;
+        border-radius: 2px;
+        height: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        width: auto;
+        min-width: 150px;
+        padding: 0 20px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: white;
+          transition: left 0.3s ease;
+          z-index: 1;
+        }
+        
+        &:hover {
+          color: #4285f4;
+          transform: translateY(-2px);
+          
+          &::before {
+            left: 0;
+          }
+        }
+        
+        span {
+          position: relative;
+          z-index: 2;
+        }
+      }
+      
+      .details-btn {
+        border: 2px solid #4285f4;
+        color: #4285f4;
+        background: white;
+        border-radius: 2px;
+        height: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        width: auto;
+        min-width: 150px;
+        padding: 0 20px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: #4285f4;
+          transition: left 0.3s ease;
+          z-index: 1;
+        }
+        
+        &:hover {
+          color: white;
+          transform: translateY(-2px);
+          
+          &::before {
+            left: 0;
+          }
+        }
+        
+        span {
+          position: relative;
+          z-index: 2;
+        }
+      }
+    }
+
+    .custom-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      gap: 10px;
+      
+      .custom-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ccc;
+        border: none;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          opacity: 0.8;
+          transform: scale(1.1);
+        }
+        
+        &.active {
+          background: #4285f4;
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    // Responsive
+    @media (max-width: 768px) {
+      .specs-content {
+        padding-bottom: 40px;
+      }
+      
+      .spec-item {
+        margin-bottom: 20px;
+        
+        .spec-value {
+          font-size: 16px;
+          
+          &.price {
+            font-size: 18px;
+          }
+        }
+      }
+      
+      .action-buttons {
+        margin-top: 30px;
+        gap: 15px;
+        flex-direction: column;
+        
+        .order-btn,
+        .details-btn {
+          width: 100%;
+          min-width: auto;
+          max-width: 250px;
+        }
+      }
+      
+      .custom-dots {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  // Anniversary Section
+  .anniversary-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+    .anniversary-content {
+      padding: 40px;
+
+      h2 {
+        color: #2c3e50 !important;
+        font-size: 2.5rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 20px !important;
+      }
+
+      .ant-typography {
+        font-size: 1.2rem;
+        color: #5d6d7e;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .discover-button {
+        background: #1e3a5f;
+        border-color: #1e3a5f;
+        color: white;
+        border-radius: 25px;
+        height: 50px;
+        font-size: 16px;
+        padding: 0 30px;
+
+        &:hover {
+          background: #2c5f87;
+          border-color: #2c5f87;
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    .anniversary-image {
+      text-align: center;
+
+      img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  // Journey Section
+  .journey-section {
+    padding: 100px 20px;
+    background: white;
+
+    .section-title {
+      text-align: center;
+      color: #2c3e50 !important;
+      font-size: 2.5rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 60px !important;
+    }
+
+    .model-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .model-image {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        .model-type-badge {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background: rgba(0, 0, 0, 0.7);
+          color: white;
+          padding: 5px 12px;
+          border-radius: 15px;
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+      }
+
+      .model-content {
+        padding: 25px;
+
+        .model-name {
+          color: #2c3e50 !important;
+          font-size: 1.8rem !important;
+          font-weight: 600 !important;
+          margin: 0 0 10px 0 !important;
+        }
+
+        .model-description {
+          color: #5d6d7e;
+          font-size: 14px;
+          line-height: 1.6;
+          margin-bottom: 20px;
+          display: block;
+        }
+
+        .explore-button {
+          color: #1e3a5f;
+          font-weight: 600;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          &:hover {
+            color: #2c5f87;
+          }
+        }
+      }
+
+      &:hover .model-image img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Discover Section
+  .discover-section {
+    padding: 100px 20px;
+    background: #f8f9fa;
+
+    .section-title {
+      text-align: center;
+      color: #2c3e50 !important;
+      font-size: 2.5rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 60px !important;
+    }
+
+    .discover-item {
+      border-radius: 15px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .discover-image {
+        height: 250px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      .discover-content {
+        padding: 25px;
+
+        h4 {
+          color: #2c3e50 !important;
+          font-size: 1.4rem !important;
+          font-weight: 600 !important;
+          margin: 0 0 10px 0 !important;
+        }
+
+        span {
+          color: #5d6d7e;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+      }
+
+      &:hover .discover-image img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Footer
+  .footer {
+    background: #2c3e50;
+    padding: 60px 20px;
+    color: white;
+
+    .footer-content {
+      text-align: center;
+
+      .footer-title {
+        color: white !important;
+        font-size: 2rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 15px !important;
+      }
+
+      .footer-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+    .hero-section {
+      .hero-title {
+        font-size: 1.8rem !important;
+      }
+
+      .hero-overlay {
+        padding: 25px 20px;
+        max-width: 90%;
+      }
+
+      .hero-button {
+        height: 40px;
+        font-size: 13px;
+        padding: 0 20px;
+      }
+    }
+
+    .anniversary-section {
+      .anniversary-content {
+        padding: 20px;
+        text-align: center;
+
+        h2 {
+          font-size: 2rem !important;
+        }
+      }
+    }
+
+    .journey-section,
+    .discover-section {
+      .section-title {
+        font-size: 2rem !important;
+      }
+    }
+
+    .featured-cars {
+      .featured-car-item {
+        height: 300px;
+      }
+    }
+  }
+} 
