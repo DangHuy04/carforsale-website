@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, Button, Drawer, Space, Dropdown, Avatar, Tooltip } from 'antd';
 import { MenuOutlined, UserOutlined, LoginOutlined, UserAddOutlined } from '@ant-design/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faCar, faWrench, faBuilding, faNewspaper, faInfoCircle, faPhone, faEnvelope, faSignInAlt, faUserPlus, faUser } from '@fortawesome/free-solid-svg-icons';
 import logoVinFast from '../../assets/logov.svg';
 import './Navbar.scss';
 
@@ -52,33 +54,54 @@ const Navbar = () => {
             key: 'home', 
             label: (
                 <Link to="/" style={linkStyle} onClick={closeSidebar}>
-                    <span className="menu-item">🏠 Trang chủ</span>
+                    <span className="menu-item">
+                        <FontAwesomeIcon icon={faHome} className="menu-icon" />
+                        Trang chủ
+                    </span>
                 </Link>
             )
         },
         { 
             key: 'cars', 
-            label: <span className="menu-item">🚗 Dòng xe VinFast</span>
+            label: <span className="menu-item">
+                <FontAwesomeIcon icon={faCar} className="menu-icon" />
+                Dòng xe VinFast
+            </span>
         },
         { 
             key: 'services', 
-            label: <span className="menu-item">⚙️ Dịch vụ</span>
+            label: <span className="menu-item">
+                <FontAwesomeIcon icon={faWrench} className="menu-icon" />
+                Dịch vụ
+            </span>
         },
         { 
             key: 'showroom', 
-            label: <span className="menu-item">🏢 Showroom</span>
+            label: <span className="menu-item">
+                <FontAwesomeIcon icon={faBuilding} className="menu-icon" />
+                Showroom
+            </span>
         },
         { 
             key: 'news', 
-            label: <span className="menu-item">📰 Tin tức</span>
+            label: <span className="menu-item">
+                <FontAwesomeIcon icon={faNewspaper} className="menu-icon" />
+                Tin tức
+            </span>
         },
         { 
             key: 'about', 
-            label: <span className="menu-item">ℹ️ Về VinFast</span>
+            label: <span className="menu-item">
+                <FontAwesomeIcon icon={faInfoCircle} className="menu-icon" />
+                Về VinFast
+            </span>
         },
         { 
             key: 'contact', 
-            label: <span className="menu-item">📞 Liên hệ</span>
+            label: <span className="menu-item">
+                <FontAwesomeIcon icon={faPhone} className="menu-icon" />
+                Liên hệ
+            </span>
         },
     ];
 
@@ -87,22 +110,18 @@ const Navbar = () => {
         {
             key: 'login',
             label: (
-                <Link to="/login" style={linkStyle}>
-                    <Space>
-                        <LoginOutlined />
-                        Đăng nhập
-                    </Space>
+                <Link to="/login" style={linkStyle} className="user-menu-item">
+                    <FontAwesomeIcon icon={faSignInAlt} className="user-menu-icon" />
+                    <span>Đăng nhập</span>
                 </Link>
             ),
         },
         {
             key: 'register',
             label: (
-                <Link to="/register" style={linkStyle}>
-                    <Space>
-                        <UserAddOutlined />
-                        Đăng ký
-                    </Space>
+                <Link to="/register" style={linkStyle} className="user-menu-item">
+                    <FontAwesomeIcon icon={faUserPlus} className="user-menu-icon" />
+                    <span>Đăng ký</span>
                 </Link>
             ),
         },
@@ -148,27 +167,16 @@ const Navbar = () => {
                         type="text"
                         className="user-button"
                     >
-                        <Avatar 
-                            size="small" 
-                            icon={<UserOutlined />} 
-                            className="user-avatar"
-                        />
+                        <div className="user-avatar-container">
+                            <FontAwesomeIcon icon={faUser} className="user-avatar-icon" />
+                        </div>
                     </Button>
                 </Dropdown>
             </div>
 
             {/* Sliding Sidebar Menu */}
             <Drawer
-                title={
-                    <div className="sidebar-header">
-                        <img 
-                            src={logoVinFast} 
-                            alt="VinFast" 
-                            className="sidebar-logo"
-                        />
-                        <span className="sidebar-title">VinFast Menu</span>
-                    </div>
-                }
+                title={null}
                 placement="left"
                 onClose={closeSidebar}
                 open={sidebarVisible}
@@ -182,15 +190,6 @@ const Navbar = () => {
                     items={sidebarMenuItems}
                     className="sidebar-menu"
                 />
-                
-                {/* Bottom section of sidebar */}
-                <div className="sidebar-footer">
-                    <div className="sidebar-contact">
-                        <h4>Liên hệ hỗ trợ</h4>
-                        <p>📞 1900 23 23 89</p>
-                        <p>✉️ support@vinfast.vn</p>
-                    </div>
-                </div>
             </Drawer>
         </div>
     );

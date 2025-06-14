@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import ChatBot from '../ChatBot/ChatBot';
-import { Typography, Button, Row, Col, Card, Space, Carousel } from 'antd';
-import { PlayCircleOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { Typography, Button, Row, Col, Card, Space, Carousel, Divider } from 'antd';
+import { PlayCircleOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined, PhoneOutlined, MailOutlined, EnvironmentOutlined, FacebookOutlined, YoutubeOutlined, InstagramOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import Navbar from '../Navbar/Navbar';
 import heroVideo from '../../assets/mix.mp4';
+import logoVinFast from '../../assets/logov.svg';
 
 // Import ảnh từ assets
 import ecvan02Image from '../../assets/cars/ecvan-02.webp';
@@ -25,6 +26,8 @@ const { Title, Text, Paragraph } = Typography;
 const Home = () => {
     const carouselRef = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [showScrollTop, setShowScrollTop] = useState(false);
+    const [isChatOpen, setIsChatOpen] = useState(false);
     
     // Data cho carousel xe đơn giản (từ ecvan-02 đến vf9)
     const carModels = [
@@ -208,6 +211,28 @@ const Home = () => {
             description: 'Khám phá nghệ thuật chế tạo xe tinh xảo của VinFast'
         }
     ];
+
+    // Scroll to top functionality
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            setShowScrollTop(scrollTop > 300);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    const handleChatToggle = (isOpen) => {
+        setIsChatOpen(isOpen);
+    };
 
     return (
         <div className="vinfast-home">
@@ -440,13 +465,92 @@ const Home = () => {
             {/* Footer */}
             <div className="footer">
                 <div className="container">
+                    <Row gutter={[40, 40]}>
+                        {/* Logo & Company Info */}
+                        <Col xs={24} md={8}>
+                            <div className="footer-logo-section">
+                                <div className="footer-logo-container">
+                                    <img 
+                                        src={logoVinFast} 
+                                        alt="VinFast Logo" 
+                                        className="footer-logo"
+                                    />
+                                </div>
+                                <Text className="footer-description">
+                                    Hệ thống bán xe ô tô hàng đầu Việt Nam. Cung cấp các dòng xe VinFast chính hãng với chất lượng tốt nhất.
+                                </Text>
+                                <div className="footer-social">
+                                    <Button type="text" icon={<FacebookOutlined />} className="social-btn" />
+                                    <Button type="text" icon={<YoutubeOutlined />} className="social-btn" />
+                                    <Button type="text" icon={<InstagramOutlined />} className="social-btn" />
+                                </div>
+                            </div>
+                        </Col>
+
+                        {/* Quick Links */}
+                        <Col xs={24} md={8}>
+                            <div className="footer-links">
+                                <Title level={4} className="footer-section-title">Liên kết nhanh</Title>
+                                <ul className="footer-link-list">
+                                    <li><a href="#home">Trang chủ</a></li>
+                                    <li><a href="#cars">Dòng xe VinFast</a></li>
+                                    <li><a href="#services">Dịch vụ</a></li>
+                                    <li><a href="#showroom">Showroom</a></li>
+                                    <li><a href="#news">Tin tức</a></li>
+                                    <li><a href="#about">Về chúng tôi</a></li>
+                                </ul>
+                            </div>
+                        </Col>
+
+                        {/* Contact Info */}
+                        <Col xs={24} md={8}>
+                            <div className="footer-contact">
+                                {/* Customer Service */}
+                                <div className="contact-section">
+                                    <Title level={5} className="contact-section-title">DỊCH VỤ KHÁCH HÀNG</Title>
+                                    <div className="contact-group">
+                                        <div className="contact-item-new">
+                                            <PhoneOutlined className="contact-icon-new" />
+                                            <Text className="contact-link">1900 23 23 89</Text>
+                                        </div>
+                                        <div className="contact-item-new">
+                                            <MailOutlined className="contact-icon-new" />
+                                            <Text className="contact-link">support@vcar.vn</Text>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Technical Support */}
+                                <div className="contact-section">
+                                    <Title level={5} className="contact-section-title">HỖ TRỢ KỸ THUẬT</Title>
+                                    <div className="contact-group">
+                                        <div className="contact-item-new">
+                                            <PhoneOutlined className="contact-icon-new" />
+                                            <Text className="contact-link">+84 24 4458 2193</Text>
+                                        </div>
+                                        <div className="contact-item-new">
+                                            <MailOutlined className="contact-icon-new" />
+                                            <Text className="contact-link">tech.support@vcar.vn</Text>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+
+                    {/* Footer Bottom */}
+                    <Divider className="footer-divider" />
                     <Row>
                         <Col span={24}>
-                            <div className="footer-content">
-                                <Title level={3} className="footer-title">VinFast Việt Nam</Title>
-                                <Text className="footer-text">
-                                    © 2024 VinFast Trading and Investment LLC. Tất cả quyền được bảo lưu.
-                    </Text>
+                            <div className="footer-bottom">
+                                <Text className="footer-copyright">
+                                    © 2024 VCar Trading and Investment LLC. Tất cả quyền được bảo lưu.
+                                </Text>
+                                <div className="footer-bottom-links">
+                                    <a href="#privacy">Chính sách bảo mật</a>
+                                    <a href="#terms">Điều khoản sử dụng</a>
+                                    <a href="#support">Hỗ trợ khách hàng</a>
+                                </div>
                             </div>
                         </Col>
                     </Row>
@@ -454,7 +558,19 @@ const Home = () => {
             </div>
 
             {/* ChatBot Component - Thêm vào cuối */}
-            <ChatBot />
+            <ChatBot onChatToggle={handleChatToggle} />
+
+            {/* Scroll to Top Button */}
+            {showScrollTop && (
+                <Button
+                    type="primary"
+                    shape="circle"
+                    icon={<ArrowUpOutlined />}
+                    size="large"
+                    className={`scroll-to-top ${isChatOpen ? 'chat-open' : ''}`}
+                    onClick={scrollToTop}
+                />
+            )}
         </div>
     );
 };

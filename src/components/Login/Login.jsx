@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Typography, Input, Button, Form, Space, Card, message } from 'antd';
-import { UserOutlined, LockOutlined, CarOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { Typography, Input, Button, Form, message, Row, Col } from 'antd';
+import { UserOutlined, LockOutlined, ArrowLeftOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import logoVinFast from '../../assets/logov.svg';
+import './Login.scss';
 
 const { Title, Text } = Typography;
 
@@ -21,140 +25,109 @@ const Login = () => {
     };
 
     return (
-        <div
-            style={{
-                minHeight: '100vh',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '20px'
-            }}
-        >
-            <Card
-                style={{
-                    width: '100%',
-                    maxWidth: 400,
-                    borderRadius: 15,
-                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                    border: 'none'
-                }}
-                bodyStyle={{ padding: 40 }}
+        <div className="login-container">
+            <Button
+                type="text"
+                icon={<ArrowLeftOutlined />}
+                onClick={() => navigate('/')}
+                className="back-button"
             >
-                {/* Header */}
-                <div style={{ textAlign: 'center', marginBottom: 30 }}>
-                    <Button
-                        type="text"
-                        icon={<ArrowLeftOutlined />}
-                        onClick={() => navigate('/')}
-                        style={{
-                            position: 'absolute',
-                            top: 20,
-                            left: 20,
-                            color: '#1e3c72'
-                        }}
-                    >
-                        Về trang chủ
-                    </Button>
-                    
-                    <Space direction="vertical" size="small">
-                        <CarOutlined style={{ fontSize: 48, color: '#1e3c72' }} />
-                        <Title level={2} style={{ margin: 0, color: '#1e3c72' }}>
-                            VCar
-                        </Title>
-                        <Text style={{ color: '#666' }}>
-                            Đăng nhập vào hệ thống
-                        </Text>
-                    </Space>
-                </div>
+                Về trang chủ
+            </Button>
 
-                {/* Login Form */}
-                <Form
-                    name="login"
-                    onFinish={onFinish}
-                    layout="vertical"
-                    requiredMark={false}
-                >
-                    <Form.Item
-                        name="username"
-                        label="Tên đăng nhập hoặc Email"
-                        rules={[
-                            { required: true, message: 'Vui lòng nhập tên đăng nhập hoặc email!' }
-                        ]}
-                    >
-                        <Input
-                            prefix={<UserOutlined style={{ color: '#1e3c72' }} />}
-                            placeholder="Nhập tên đăng nhập hoặc email"
-                            size="large"
-                            style={{ borderRadius: 8 }}
-                        />
-                    </Form.Item>
+            <Row className="login-row">
+                {/* Left Side - Background Image */}
+                <Col xs={0} md={14} lg={16} className="login-image-section">
+                </Col>
 
-                    <Form.Item
-                        name="password"
-                        label="Mật khẩu"
-                        rules={[
-                            { required: true, message: 'Vui lòng nhập mật khẩu!' },
-                            { min: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự!' }
-                        ]}
-                    >
-                        <Input.Password
-                            prefix={<LockOutlined style={{ color: '#1e3c72' }} />}
-                            placeholder="Nhập mật khẩu"
-                            size="large"
-                            style={{ borderRadius: 8 }}
-                        />
-                    </Form.Item>
+                {/* Right Side - Login Form */}
+                <Col xs={24} md={10} lg={8} className="login-form-section">
+                    <div className="form-container">
+                        {/* Logo */}
+                        <div className="logo-section">
+                            <img src={logoVinFast} alt="VinFast Logo" className="logo" />
+                        </div>
 
-                    <Form.Item style={{ marginBottom: 16 }}>
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            loading={loading}
-                            size="large"
-                            style={{
-                                width: '100%',
-                                background: 'linear-gradient(135deg, #1e3c72, #2a5298)',
-                                borderColor: '#1e3c72',
-                                borderRadius: 8,
-                                height: 50,
-                                fontSize: '1.1rem'
-                            }}
-                        >
-                            Đăng nhập
-                        </Button>
-                    </Form.Item>
-
-                    <div style={{ textAlign: 'center' }}>
-                        <Space direction="vertical" size="small">
-                            <Link to="#" style={{ color: '#1e3c72' }}>
-                                Quên mật khẩu?
-                            </Link>
-                            <Text style={{ color: '#666' }}>
-                                Chưa có tài khoản?{' '}
-                                <Link to="#" style={{ color: '#1e3c72', fontWeight: 500 }}>
-                                    Đăng ký ngay
-                                </Link>
+                        {/* Form Header */}
+                        <div className="form-header">
+                            <Title level={2} className="form-title">
+                                Chào mừng!
+                            </Title>
+                            <Text className="form-subtitle">
+                                Đăng nhập vào tài khoản VinFast của bạn
                             </Text>
-                        </Space>
-                    </div>
-                </Form>
+                        </div>
 
-                {/* Demo accounts */}
-                <div style={{ 
-                    marginTop: 20, 
-                    padding: 15, 
-                    background: '#f8f9fa', 
-                    borderRadius: 8,
-                    border: '1px solid #e9ecef'
-                }}>
-                    <Text style={{ fontSize: '0.9rem', color: '#666' }}>
-                        <strong>Tài khoản demo:</strong><br />
-                        • Admin: admin / 123456<br />
-                        • Khách hàng: customer@vcar.com / 123456
-                    </Text>
-                </div>
-            </Card>
+                        {/* Login Form */}
+                        <Form
+                            name="login"
+                            onFinish={onFinish}
+                            layout="vertical"
+                            requiredMark={false}
+                            className="login-form"
+                        >
+                            <Form.Item
+                                name="email"
+                                label="Email"
+                                rules={[
+                                    { required: true, message: 'Vui lòng nhập email!' },
+                                    { type: 'email', message: 'Email không hợp lệ!' }
+                                ]}
+                            >
+                                <Input
+                                    placeholder="Nhập email của bạn"
+                                    size="large"
+                                    className="custom-input"
+                                    prefix={<FontAwesomeIcon icon={faEnvelope} className="input-icon" />}
+                                />
+                            </Form.Item>
+
+                            <Form.Item
+                                name="password"
+                                label="Mật khẩu"
+                                rules={[
+                                    { required: true, message: 'Vui lòng nhập mật khẩu!' },
+                                    { min: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự!' }
+                                ]}
+                            >
+                                <Input.Password
+                                    placeholder="Nhập mật khẩu"
+                                    size="large"
+                                    className="custom-input"
+                                    prefix={<FontAwesomeIcon icon={faLock} className="input-icon" />}
+                                    iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                                />
+                            </Form.Item>
+
+                            {/* Login Button */}
+                            <Form.Item>
+                                <Button
+                                    type="primary"
+                                    size="large"
+                                    className="login-btn primary-btn"
+                                    loading={loading}
+                                    htmlType="submit"
+                                >
+                                    Đăng nhập
+                                </Button>
+                            </Form.Item>
+
+                            {/* Links */}
+                            <div className="form-links">
+                                <Link to="/forgot-password" className="forgot-link">
+                                    Quên mật khẩu?
+                                </Link>
+                                <Text className="register-text">
+                                    Chưa có tài khoản?{' '}
+                                    <Link to="/register" className="register-link">
+                                        Đăng ký ngay
+                                    </Link>
+                                </Text>
+                            </div>
+                        </Form>
+                    </div>
+                </Col>
+            </Row>
         </div>
     );
 };

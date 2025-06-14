@@ -3,8 +3,16 @@ import { Input, Button, Spin, Card, Row, Tag, Col } from 'antd';
 import { MessageOutlined, CloseOutlined, CarOutlined } from '@ant-design/icons';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const ChatBot = () => {
+const ChatBot = ({ onChatToggle }) => {
     const [isChatOpen, setIsChatOpen] = useState(false);
+
+    // Notify parent component when chat opens/closes
+    const toggleChat = (isOpen) => {
+        setIsChatOpen(isOpen);
+        if (onChatToggle) {
+            onChatToggle(isOpen);
+        }
+    };
     const [chatMessage, setChatMessage] = useState('');
     const [chatHistory, setChatHistory] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -709,10 +717,11 @@ const ChatBot = () => {
         <div style={{ zIndex: 2, position: 'absolute', top: 0 }}>
             {!isChatOpen && (
                 <div
+                    className="chatbot-button"
                     style={{
                         position: 'fixed',
                         bottom: '20px',
-                        right: '20px',
+                        right: '30px',
                         width: '60px',
                         height: '60px',
                         backgroundColor: '#1e3c72',
@@ -725,7 +734,7 @@ const ChatBot = () => {
                         transition: 'all 0.3s ease',
                         animation: 'pulse 2s infinite'
                     }}
-                    onClick={() => setIsChatOpen(true)}
+                    onClick={() => toggleChat(true)}
                     onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'scale(1.1)';
                         e.currentTarget.style.backgroundColor = '#2a5298';
@@ -740,10 +749,11 @@ const ChatBot = () => {
             )}
             {isChatOpen && (
                 <div
+                    className="chatbot-window"
                     style={{
                         position: 'fixed',
                         bottom: '20px',
-                        right: '20px',
+                        right: '30px',
                         width: '380px',
                         height: '550px',
                         backgroundColor: 'white',
@@ -778,7 +788,7 @@ const ChatBot = () => {
                                 borderRadius: '4px',
                                 transition: 'background-color 0.3s'
                             }}
-                            onClick={() => setIsChatOpen(false)}
+                            onClick={() => toggleChat(false)}
                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.2)'}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                         />
@@ -866,6 +876,19 @@ const ChatBot = () => {
                     }
                     100% {
                         box-shadow: 0 0 0 0 rgba(30, 60, 114, 0);
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    .chatbot-button {
+                        bottom: 20px !important;
+                        right: 20px !important;
+                    }
+                    .chatbot-window {
+                        bottom: 20px !important;
+                        right: 20px !important;
+                        width: calc(100vw - 40px) !important;
+                        max-width: 350px !important;
                     }
                 }
             `}</style>

@@ -94,28 +94,30 @@
     justify-content: flex-end;
 
     .user-button {
-      border: none;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
       transition: all 0.3s ease;
-      border-radius: 6px;
+      border-radius: 25px;
+      height: auto;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.4);
         transform: translateY(-1px);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
       }
 
-      .user-avatar {
-        background: transparent;
-        color: white;
-        border: none;
-        border-radius: 0;
+      .user-avatar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         
-        .anticon {
+        .user-avatar-icon {
           color: white;
           font-size: 16px;
+          width: 16px;
+          height: 16px;
         }
       }
     }
@@ -124,31 +126,8 @@
 
 // Sidebar Styles
 .vinfast-sidebar {
-  .ant-drawer-header {
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    
-    .sidebar-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      
-      .sidebar-logo {
-        height: 32px;
-        width: auto;
-        filter: brightness(1.2);
-      }
-      
-      .sidebar-title {
-        color: white;
-        font-size: 18px;
-        font-weight: 600;
-      }
-    }
-  }
-
   .ant-drawer-body {
-    background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+    background: #ffffff;
     padding: 0;
     position: relative;
   }
@@ -156,83 +135,98 @@
   .sidebar-menu {
     background: transparent;
     border: none;
-    color: white;
+    color: #333;
+    padding-top: 20px;
 
     .ant-menu-item {
-      margin: 8px 16px;
-      border-radius: 12px;
+      margin: 4px 16px;
+      border-radius: 8px;
       transition: all 0.3s ease;
       
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: #f5f5f5;
         transform: translateX(5px);
       }
 
       .menu-item {
-        color: white;
+        color: #333;
         font-size: 16px;
         font-weight: 500;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
+
+        .menu-icon {
+          width: 18px;
+          height: 18px;
+          color: #4285f4;
+          font-size: 16px;
+        }
       }
     }
 
     .ant-menu-item-selected {
-      background: rgba(44, 62, 80, 0.3);
-      border-left: 4px solid #2c3e50;
+      background: #e3f2fd;
+      border-left: 4px solid #4285f4;
     }
   }
 
-  .sidebar-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 
-    .sidebar-contact {
-      color: white;
-      text-align: center;
-
-      h4 {
-        color: white;
-        margin-bottom: 10px;
-        font-size: 16px;
-      }
-
-      p {
-        color: rgba(255, 255, 255, 0.8);
-        margin: 5px 0;
-        font-size: 14px;
-      }
-    }
-  }
 }
 
 // User Dropdown Styles
 .ant-dropdown {
   .ant-dropdown-menu {
-    background: rgba(44, 62, 80, 0.95);
+    background: #ffffff;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #e8e8e8;
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    min-width: 180px;
 
     .ant-dropdown-menu-item {
-      color: white;
-      padding: 12px 16px;
+      padding: 0;
+      margin: 4px 8px;
+      border-radius: 8px;
       transition: all 0.3s ease;
 
       &:hover {
-        background: rgba(44, 62, 80, 0.3);
-        color: white;
+        background: #f5f7fa;
       }
 
-      .anticon {
-        color: #2c3e50;
+      .user-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: #333;
+        text-decoration: none;
+        width: 100%;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        .user-menu-icon {
+          color: #4285f4;
+          font-size: 16px;
+          width: 16px;
+          height: 16px;
+        }
+
+        span {
+          font-size: 15px;
+          font-weight: 500;
+        }
+
+        &:hover {
+          color: #4285f4;
+          background: #e3f2fd;
+          transform: translateX(2px);
+
+          .user-menu-icon {
+            color: #2563eb;
+          }
+        }
       }
     }
   }

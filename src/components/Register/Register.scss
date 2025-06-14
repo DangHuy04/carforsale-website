@@ -1,0 +1,312 @@
+.register-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  .back-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    z-index: 10;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 8px 20px;
+    height: auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .anticon {
+      margin-right: 8px;
+    }
+  }
+
+  .register-row {
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  // Left Side - Background Image
+  .register-image-section {
+    background: url('../../assets/login.jpg') center/cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  // Right Side - Form
+  .register-form-section {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+
+    .form-container {
+      width: 100%;
+      max-width: 420px;
+      padding: 0 20px;
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 40px;
+
+      .logo {
+        height: 45px;
+        width: auto;
+      }
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+
+      .form-title {
+        color: #333 !important;
+        font-size: 2rem !important;
+        font-weight: 600 !important;
+        line-height: 1.3 !important;
+        margin-bottom: 15px !important;
+      }
+
+      .form-subtitle {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.5;
+        display: block;
+      }
+    }
+
+    .register-form {
+      .ant-form-item {
+        margin-bottom: 20px;
+      }
+
+      .custom-input {
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        padding: 12px 16px;
+        font-size: 15px;
+        height: 50px;
+        transition: all 0.3s ease;
+
+        &:focus,
+        &:hover {
+          border-color: #4285f4;
+          box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.1);
+        }
+
+        .input-icon {
+          color: #4285f4;
+          font-size: 16px;
+          margin-right: 8px;
+        }
+
+        &::placeholder {
+          color: #999;
+          font-size: 14px;
+        }
+      }
+
+      // Password Requirements
+      .password-requirements {
+        margin-top: -10px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+
+        .requirements-title {
+          font-size: 14px;
+          font-weight: 600;
+          color: #495057;
+          margin-bottom: 12px;
+        }
+
+        .requirement-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 8px;
+          transition: all 0.3s ease;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .check-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            border-radius: 50%;
+            padding: 2px;
+            font-size: 10px;
+            transition: all 0.3s ease;
+
+            &.valid {
+              background: #28a745;
+              color: white;
+            }
+
+            &.invalid {
+              background: #e9ecef;
+              color: #6c757d;
+            }
+          }
+
+          .requirement-text {
+            font-size: 13px;
+            transition: color 0.3s ease;
+          }
+
+          &.valid {
+            .requirement-text {
+              color: #28a745;
+              font-weight: 500;
+            }
+          }
+
+          &.invalid {
+            .requirement-text {
+              color: #6c757d;
+            }
+          }
+        }
+      }
+
+      .register-btn {
+        width: 100%;
+        height: 50px;
+        border-radius: 4px;
+        font-size: 15px;
+        font-weight: 500;
+        border: none;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+
+        &.primary-btn {
+          background: #4285f4;
+          color: white;
+
+          &:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+          }
+
+          &:focus {
+            background: #4285f4;
+            border-color: #4285f4;
+          }
+        }
+      }
+
+      .form-links {
+        text-align: center;
+        margin-top: 20px;
+
+        .login-text {
+          color: #666;
+          font-size: 14px;
+
+          .login-link {
+            color: #4285f4;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: #2563eb;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+    .back-button {
+      top: 20px;
+      left: 20px;
+      font-size: 14px;
+      padding: 6px 15px;
+    }
+
+    .register-form-section {
+      padding: 30px 15px;
+
+      .form-container {
+        padding: 0 10px;
+      }
+
+      .logo-section {
+        margin-bottom: 30px;
+
+        .logo {
+          height: 40px;
+        }
+      }
+
+      .form-header {
+        margin-bottom: 30px;
+
+        .form-title {
+          font-size: 1.5rem !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .register-form-section {
+      .form-header {
+        .form-title {
+          font-size: 1.3rem !important;
+        }
+      }
+
+      .register-form {
+        .register-btn {
+          height: 45px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+// Override Ant Design styles
+.ant-form-item-label > label {
+  font-weight: 500;
+  color: #333;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.1);
+}
+
+.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+  background: #2563eb;
+  border-color: #2563eb;
+} 
