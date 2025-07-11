@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import './App.css';
+import ForgotPassword from './components/Login/ForgotPassword';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/forgot-password" element={<ForgotPassword to="/" />} />
           </Routes>
         </BrowserRouter>
       </div>

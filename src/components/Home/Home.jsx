@@ -28,7 +28,7 @@ const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false);
-    
+
     // Data cho carousel xe đơn giản (từ ecvan-02 đến vf9)
     const carModels = [
         {
@@ -63,7 +63,7 @@ const Home = () => {
         },
         {
             id: 4,
-            name: 'NERIO GREEN', 
+            name: 'NERIO GREEN',
             title: 'NERIO GREEN',
             image: nerioImage,
             segment: 'Mid-size Car',
@@ -153,7 +153,7 @@ const Home = () => {
             price: 'Từ 240 triệu VNĐ'
         },
         {
-            name: 'VF 5', 
+            name: 'VF 5',
             type: 'Điện',
             description: 'SUV cỡ nhỏ năng động: 4 cửa, 5 chỗ ngồi, thiết kế trẻ trung hiện đại.',
             image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop&crop=center',
@@ -237,7 +237,7 @@ const Home = () => {
     return (
         <div className="vinfast-home">
             <Navbar />
-            
+
             {/* Hero Section - VinFast Electric Revolution */}
             <div className="hero-section">
                 <div className="hero-content">
@@ -246,9 +246,9 @@ const Home = () => {
                             <Title level={1} className="hero-title">
                                 VinFast: Mãnh liệt tinh thần Việt Nam
                             </Title>
-                                <Button
-                                    type="primary"
-                                    size="large"
+                            <Button
+                                type="primary"
+                                size="large"
                                 icon={<PlayCircleOutlined />}
                                 className="hero-button"
                             >
@@ -258,10 +258,10 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="hero-video">
-                    <video 
-                        autoPlay 
-                        muted 
-                        loop 
+                    <video
+                        autoPlay
+                        muted
+                        loop
                         playsInline
                         className="hero-video-element"
                     >
@@ -274,14 +274,14 @@ const Home = () => {
             {/* Car Models Carousel */}
             <div className="car-models-carousel">
                 <div className="carousel-container">
-                    <button 
+                    <button
                         className="carousel-arrow carousel-arrow-left"
                         onClick={() => carouselRef.current?.prev()}
                     >
                         <LeftOutlined />
                     </button>
-                    
-                    <Carousel 
+
+                    <Carousel
                         ref={carouselRef}
                         autoplay
                         autoplaySpeed={4000}
@@ -295,8 +295,8 @@ const Home = () => {
                             <div key={car.id} className="car-slide">
                                 <div className="car-slide-container">
                                     <div className="car-image-full">
-                                        <img 
-                                            src={car.image} 
+                                        <img
+                                            src={car.image}
                                             alt={car.title}
                                             className="car-full-image"
                                         />
@@ -305,8 +305,8 @@ const Home = () => {
                             </div>
                         ))}
                     </Carousel>
-                    
-                    <button 
+
+                    <button
                         className="carousel-arrow carousel-arrow-right"
                         onClick={() => carouselRef.current?.next()}
                     >
@@ -352,7 +352,7 @@ const Home = () => {
                             </Button>
                             <Button size="large" className="details-btn">
                                 XEM CHI TIẾT
-                                </Button>
+                            </Button>
                         </div>
                         <div className="custom-dots">
                             {carModels.map((_, index) => (
@@ -381,13 +381,13 @@ const Home = () => {
                             </Paragraph>
                             <Button type="primary" size="large" className="discover-button">
                                 Khám Phá Ngay
-                                </Button>
+                            </Button>
                         </div>
                     </Col>
                     <Col xs={24} md={12}>
                         <div className="anniversary-image">
-                            <img 
-                                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center" 
+                            <img
+                                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center"
                                 alt="VinFast Innovation Technology"
                             />
                         </div>
@@ -423,10 +423,10 @@ const Home = () => {
                                         <div className="model-price">
                                             <Text strong style={{ color: '#1e3a5f', fontSize: '16px' }}>
                                                 {model.price}
-                                        </Text>
+                                            </Text>
                                         </div>
-                                        <Button 
-                                            type="link" 
+                                        <Button
+                                            type="link"
                                             className="explore-button"
                                             icon={<ArrowRightOutlined />}
                                         >
@@ -455,7 +455,7 @@ const Home = () => {
                                         <Title level={4}>{item.title}</Title>
                                         <Text>{item.description}</Text>
                                     </div>
-                                        </div>
+                                </div>
                             </Col>
                         ))}
                     </Row>
@@ -470,9 +470,9 @@ const Home = () => {
                         <Col xs={24} md={8}>
                             <div className="footer-logo-section">
                                 <div className="footer-logo-container">
-                                    <img 
-                                        src={logoVinFast} 
-                                        alt="VinFast Logo" 
+                                    <img
+                                        src={logoVinFast}
+                                        alt="VinFast Logo"
                                         className="footer-logo"
                                     />
                                 </div>
