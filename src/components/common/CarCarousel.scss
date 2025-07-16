@@ -1,0 +1,133 @@
+.car-carousel-container {
+  position: relative;
+  width: 100%;
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1e3a5f;
+    font-size: 18px;
+    
+    &:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    &.carousel-arrow-left {
+      left: 20px;
+    }
+    
+    &.carousel-arrow-right {
+      right: 20px;
+    }
+  }
+
+  .car-carousel {
+    .car-slide {
+      .car-slide-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 500px;
+        
+        .car-image-full {
+          width: 100%;
+          max-width: 900px;
+          
+          .car-full-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+          }
+        }
+      }
+    }
+  }
+
+  .custom-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    
+    .custom-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.8);
+        transform: scale(1.2);
+      }
+      
+      &.active {
+        background: white;
+        border-color: white;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carousel-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+      
+      &.carousel-arrow-left {
+        left: 10px;
+      }
+      
+      &.carousel-arrow-right {
+        right: 10px;
+      }
+    }
+
+    .car-carousel {
+      .car-slide {
+        .car-slide-container {
+          min-height: 300px;
+          padding: 0 60px;
+        }
+      }
+    }
+
+    .custom-dots {
+      margin-top: 24px;
+      gap: 8px;
+      
+      .custom-dot {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .car-carousel {
+      .car-slide {
+        .car-slide-container {
+          padding: 0 50px;
+        }
+      }
+    }
+  }
+} 

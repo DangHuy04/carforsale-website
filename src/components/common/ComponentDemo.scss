@@ -1,0 +1,56 @@
+.component-demo {
+  padding: 40px 20px;
+  background: #fafafa;
+  min-height: 100vh;
+
+  &.dark-mode {
+    background: #1a1a1a;
+    color: white;
+
+    .ant-divider {
+      border-color: #434343;
+    }
+
+    .ant-divider-inner-text {
+      color: white;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .ant-divider {
+    margin: 40px 0 24px 0;
+
+    .ant-divider-inner-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  .ant-space {
+    width: 100%;
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    .ant-divider {
+      margin: 32px 0 20px 0;
+
+      .ant-divider-inner-text {
+        font-size: 16px;
+      }
+    }
+  }
+} 

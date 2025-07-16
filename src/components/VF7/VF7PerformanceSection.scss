@@ -1,0 +1,62 @@
+.vf7-performance-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+
+  .performance-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+
+    .stat {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-4px);
+      }
+
+      .number {
+        display: block;
+        font-size: 32px;
+        font-weight: 700;
+        color: #007bff;
+        line-height: 1;
+      }
+
+      .unit {
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .label {
+        display: block;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 8px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .performance-stats {
+      grid-template-columns: 1fr;
+      gap: 16px;
+
+      .stat {
+        padding: 16px;
+
+        .number {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+} 

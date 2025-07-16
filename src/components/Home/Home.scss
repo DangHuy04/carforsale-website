@@ -1,10 +1,19 @@
 .vinfast-home {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  overflow-x: hidden; // Ngăn horizontal scroll
 
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100%;
+    padding: 0 40px; // Padding để content không sát lề
+    
+    @media (max-width: 768px) {
+      padding: 0 20px; // Giảm padding trên mobile
+    }
+    
+    @media (max-width: 480px) {
+      padding: 0 15px; // Padding tối thiểu trên mobile nhỏ
+    }
   }
 
   // Hero Section
@@ -54,9 +63,15 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 40px; // Padding để content không sát lề
+      
+      @media (max-width: 768px) {
+        padding: 0 20px; // Giảm padding trên mobile
+      }
+      
+      @media (max-width: 480px) {
+        padding: 0 15px; // Padding tối thiểu trên mobile nhỏ
+      }
     }
 
     .hero-overlay {
@@ -117,15 +132,14 @@
 
   // Car Models Carousel
   .car-models-carousel {
-    background: #f8f9fa;
+    background: #ffffff;
     padding: 60px 0 0 0;
     position: relative;
 
     .carousel-container {
       position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 120px;
+      width: 100%;
+      padding: 0 120px; // Padding để có không gian cho navigation arrows
     }
 
     .carousel-arrow {
@@ -199,7 +213,13 @@
     // Responsive
     @media (max-width: 768px) {
       .carousel-container {
-        padding: 0 60px;
+        padding: 0 60px; // Giữ padding cho navigation arrows
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .carousel-container {
+        padding: 0 40px; // Giảm padding trên mobile nhỏ
       }
       
       .carousel-arrow {
@@ -226,11 +246,19 @@
   .car-specifications {
     background: #ffffff;
     padding: 0;
+    width: 100%;
 
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      width: 100%;
+      padding: 0 40px; // Padding để content không sát lề
+      
+      @media (max-width: 768px) {
+        padding: 0 20px; // Giảm padding trên mobile
+      }
+      
+      @media (max-width: 480px) {
+        padding: 0 15px; // Padding tối thiểu trên mobile nhỏ
+      }
     }
 
     .divider-line {
@@ -659,8 +687,16 @@
     }
 
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
+      padding: 0 40px; // Padding để content không sát lề
+      
+      @media (max-width: 768px) {
+        padding: 0 20px; // Giảm padding trên mobile
+      }
+      
+      @media (max-width: 480px) {
+        padding: 0 15px; // Padding tối thiểu trên mobile nhỏ
+      }
     }
 
     // Logo Section
@@ -843,7 +879,7 @@
 
     // Responsive Design
     @media (max-width: 768px) {
-      padding: 60px 20px 30px 20px;
+      padding: 60px 0 30px 0; // Loại bỏ padding horizontal vì đã có trong container
 
       .footer-logo-section {
         text-align: center;

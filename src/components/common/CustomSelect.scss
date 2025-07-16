@@ -1,0 +1,322 @@
+.custom-select-wrapper {
+  .custom-select-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .custom-select-help {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+  }
+}
+
+.custom-select {
+  width: 100%;
+  
+  // Base styles
+  &.ant-select {
+    .ant-select-selector {
+      border-radius: 8px;
+      border: 2px solid #e1e5e9;
+      transition: all 0.3s ease;
+      background: #fff;
+
+      &:hover {
+        border-color: #007bff;
+        box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+      }
+    }
+
+    &.ant-select-focused {
+      .ant-select-selector {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+      }
+    }
+
+    &.ant-select-open {
+      .ant-select-selector {
+        border-color: #007bff;
+      }
+    }
+  }
+
+  // Focused state
+  &--focused {
+    &.ant-select {
+      .ant-select-selector {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+      }
+    }
+  }
+
+  // Variant styles
+  &--filled {
+    &.ant-select {
+      .ant-select-selector {
+        background: #f8f9fa;
+        border: 2px solid transparent;
+
+        &:hover {
+          background: #e9ecef;
+          border-color: transparent;
+        }
+      }
+
+      &.ant-select-focused,
+      &.ant-select-open {
+        .ant-select-selector {
+          background: #fff;
+          border-color: #007bff;
+        }
+      }
+    }
+  }
+
+  &--borderless {
+    &.ant-select {
+      .ant-select-selector {
+        border: none;
+        border-bottom: 2px solid #e1e5e9;
+        border-radius: 0;
+        background: transparent;
+
+        &:hover {
+          border-bottom-color: #007bff;
+          box-shadow: none;
+        }
+      }
+
+      &.ant-select-focused,
+      &.ant-select-open {
+        .ant-select-selector {
+          border-bottom-color: #007bff;
+          box-shadow: 0 2px 0 0 rgba(0, 123, 255, 0.2);
+        }
+      }
+    }
+  }
+
+  // Error state
+  &.ant-select-status-error {
+    .ant-select-selector {
+      border-color: #dc3545 !important;
+
+      &:hover {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+      }
+    }
+  }
+
+  // Disabled state
+  &.ant-select-disabled {
+    .ant-select-selector {
+      background: #f5f5f5;
+      color: #999;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: #d9d9d9;
+        box-shadow: none;
+      }
+    }
+  }
+
+  // Size adjustments
+  &.ant-select-lg {
+    .ant-select-selector {
+      height: 48px;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+  }
+
+  &.ant-select-sm {
+    .ant-select-selector {
+      height: 32px;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+
+  // Multiple selection
+  &.ant-select-multiple {
+    .ant-select-selector {
+      min-height: 48px;
+      padding: 4px 8px;
+
+      .ant-select-selection-item {
+        background: #007bff;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        margin: 2px 4px 2px 0;
+        padding: 0 8px;
+        font-size: 14px;
+        line-height: 24px;
+
+        .ant-select-selection-item-remove {
+          color: rgba(255, 255, 255, 0.7);
+          
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  // Search functionality
+  &.ant-select-show-search {
+    .ant-select-selection-search-input {
+      height: 100%;
+    }
+  }
+
+  // Suffix icon
+  .ant-select-arrow {
+    color: #666;
+    transition: transform 0.3s ease;
+
+    &.ant-select-arrow-loading {
+      color: #007bff;
+    }
+  }
+
+  &.ant-select-open {
+    .ant-select-arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Clear icon
+  .ant-select-clear {
+    color: #999;
+    font-size: 14px;
+
+    &:hover {
+      color: #666;
+    }
+  }
+}
+
+// Dropdown styles
+.ant-select-dropdown {
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+
+  .ant-select-item {
+    border-radius: 6px;
+    margin: 4px 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #f0f7ff;
+    }
+
+    &.ant-select-item-option-selected {
+      background: #007bff;
+      color: white;
+      font-weight: 500;
+
+      &:hover {
+        background: #0056b3;
+      }
+    }
+
+    &.ant-select-item-option-disabled {
+      color: #999;
+      cursor: not-allowed;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    // Option with icon
+    .option-icon {
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+
+  .ant-select-item-group {
+    color: #666;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px 4px;
+    margin: 0;
+  }
+
+  // Empty state
+  .ant-select-item-empty {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 16px;
+  }
+
+  // Loading state
+  .ant-select-item-option-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #007bff;
+  }
+}
+
+// Form item spacing
+.custom-form-item {
+  .ant-form-item-explain-error {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  
+  .ant-form-item-with-help {
+    .ant-form-item-explain {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #666;
+    }
+  }
+}
+
+// Animation for dropdown
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ant-select-dropdown {
+  animation: slideDown 0.2s ease;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .custom-select {
+    &.ant-select-lg {
+      .ant-select-selector {
+        height: 44px;
+        font-size: 15px;
+      }
+    }
+  }
+} 

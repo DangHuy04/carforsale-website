@@ -1,0 +1,35 @@
+.section {
+  padding: 60px 0;
+  
+  &.primary {
+    background-color: var(--primary-color, #1e3a5f);
+    color: white;
+  }
+  
+  &.secondary {
+    background-color: var(--secondary-color, #f8f9fa);
+  }
+  
+  &.dark {
+    background-color: var(--dark-color, #1a1a1a);
+    color: white;
+  }
+  
+  &.light {
+    background-color: var(--light-color, #ffffff);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 0;
+    
+    .container {
+      padding: 0 16px;
+    }
+  }
+} 

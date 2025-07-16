@@ -1,0 +1,271 @@
+.custom-input-wrapper {
+  .custom-input-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .custom-input-help {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+  }
+}
+
+.custom-form-item {
+  .ant-form-item-label > label {
+    font-weight: 500;
+    color: #333;
+  }
+}
+
+.custom-input {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  // Base styles for all input components
+  &.ant-input,
+  &.ant-input-affix-wrapper,
+  &.ant-input-password {
+    border: 2px solid #e1e5e9;
+    background: #fff;
+    
+    &:hover {
+      border-color: #007bff;
+      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+    }
+    
+    &:focus,
+    &:focus-within {
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+  }
+
+  // Textarea specific
+  &.ant-input {
+    &[type="textarea"] {
+      min-height: 80px;
+      resize: vertical;
+    }
+  }
+
+  // Focused state
+  &--focused {
+    &.ant-input,
+    &.ant-input-affix-wrapper,
+    &.ant-input-password {
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+  }
+
+  // Variant styles
+  &--filled {
+    &.ant-input,
+    &.ant-input-affix-wrapper,
+    &.ant-input-password {
+      background: #f8f9fa;
+      border: 2px solid transparent;
+      
+      &:hover {
+        background: #e9ecef;
+        border-color: transparent;
+      }
+      
+      &:focus,
+      &:focus-within {
+        background: #fff;
+        border-color: #007bff;
+      }
+    }
+  }
+
+  &--borderless {
+    &.ant-input,
+    &.ant-input-affix-wrapper,
+    &.ant-input-password {
+      border: none;
+      border-bottom: 2px solid #e1e5e9;
+      border-radius: 0;
+      background: transparent;
+      
+      &:hover {
+        border-bottom-color: #007bff;
+        box-shadow: none;
+      }
+      
+      &:focus,
+      &:focus-within {
+        border-bottom-color: #007bff;
+        box-shadow: 0 2px 0 0 rgba(0, 123, 255, 0.2);
+      }
+    }
+  }
+
+  // Error state
+  &.ant-input-status-error,
+  &.ant-input-affix-wrapper-status-error {
+    border-color: #dc3545 !important;
+    
+    &:hover,
+    &:focus,
+    &:focus-within {
+      border-color: #dc3545 !important;
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+    }
+  }
+
+  // Disabled state
+  &:disabled,
+  &.ant-input-disabled,
+  &.ant-input-affix-wrapper-disabled {
+    background: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+    
+    &:hover {
+      border-color: #d9d9d9;
+      box-shadow: none;
+    }
+  }
+
+  // Success state (custom class)
+  &--success {
+    &.ant-input,
+    &.ant-input-affix-wrapper,
+    &.ant-input-password {
+      border-color: #28a745;
+      
+      &:hover,
+      &:focus,
+      &:focus-within {
+        border-color: #28a745;
+        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+      }
+    }
+  }
+
+  // Size adjustments
+  &.ant-input-lg,
+  &.ant-input-affix-wrapper-lg {
+    height: 48px;
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  &.ant-input-sm,
+  &.ant-input-affix-wrapper-sm {
+    height: 32px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  // Prefix/Suffix styling
+  .ant-input-prefix,
+  .ant-input-suffix {
+    color: #666;
+    
+    .anticon {
+      color: #666;
+      transition: color 0.3s ease;
+    }
+  }
+
+  &:focus-within {
+    .ant-input-prefix,
+    .ant-input-suffix {
+      .anticon {
+        color: #007bff;
+      }
+    }
+  }
+
+  // Password reveal icon
+  .ant-input-password-icon {
+    color: #666;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #007bff;
+    }
+  }
+
+  // Floating label effect (for future enhancement)
+  &--floating {
+    position: relative;
+    
+    .floating-label {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      padding: 0 4px;
+      color: #666;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+    
+    &:focus-within .floating-label,
+    &.has-value .floating-label {
+      top: 0;
+      font-size: 12px;
+      color: #007bff;
+    }
+  }
+}
+
+// TextArea specific styles
+.custom-input.ant-input {
+  &[data-count] {
+    .ant-input-show-count-suffix {
+      color: #666;
+      font-size: 12px;
+    }
+  }
+}
+
+// Form item spacing
+.custom-form-item {
+  margin-bottom: 20px;
+  
+  .ant-form-item-explain-error {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  
+  .ant-form-item-with-help {
+    .ant-form-item-explain {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #666;
+    }
+  }
+}
+
+// Animation for focus
+@keyframes inputFocus {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .custom-input {
+    &.ant-input-lg,
+    &.ant-input-affix-wrapper-lg {
+      height: 44px;
+      font-size: 15px;
+    }
+  }
+} 

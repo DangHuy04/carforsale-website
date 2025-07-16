@@ -1,0 +1,402 @@
+// Wrapper cho toàn bộ header
+.car-detail-header-wrapper {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+}
+
+// Header chính - Không sticky
+.car-detail-header {
+  background: #ffffff;
+  padding: 0;
+  position: relative;
+  z-index: 100;
+  border: none; // Đảm bảo không có border nào
+
+  .header-container {
+    width: 100%;
+    padding: 0 40px; // Tăng padding để content không sát lề
+    height: 65px; // Giảm chiều cao header từ 80px xuống 65px
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; // Chia 3 cột để logo thật sự ở giữa
+    align-items: center;
+    position: relative;
+    border: none; // Đảm bảo không có border
+  }
+
+  // Menu bên trái
+  .header-left {
+    display: flex;
+    justify-content: flex-start;
+
+    .desktop-nav {
+      display: flex;
+      gap: 40px;
+
+      .nav-item {
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: 700; // Tăng độ đậm cho menu
+        color: #333;
+        cursor: pointer;
+        padding: 12px 0;
+        position: relative;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: #4285f4;
+          transform: translateY(-1px); // Thêm hiệu ứng nâng lên khi hover
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 3px; // Tăng độ dày underline để phù hợp với font đậm
+          background: #4285f4;
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      height: 40px;
+      width: 40px;
+      border-radius: 6px;
+      font-size: 18px;
+      color: #333;
+
+      &:hover {
+        background: #f5f5f5;
+        color: #4285f4;
+      }
+    }
+  }
+
+  // Logo trung tâm
+  .header-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo-container {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .logo {
+        height: 40px; // Giảm size logo để phù hợp với header ngắn hơn
+        width: auto;
+      }
+    }
+  }
+
+  // Icon bên phải
+  .header-right {
+    display: flex;
+    justify-content: flex-end;
+
+    .account-btn {
+      height: 40px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #f5f5f5;
+        color: #4285f4;
+      }
+
+      .anticon {
+        margin-right: 6px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  // Mobile Navigation
+  .mobile-nav {
+    background: #ffffff;
+    border: none; // Xóa border-top để không có đường xám
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    &.open {
+      max-height: 200px;
+    }
+
+    .mobile-nav-item {
+      display: block;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 700; // Tăng độ đậm cho mobile menu
+      color: #333;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #f8f9fa;
+        color: #4285f4;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// Phần thông tin sản phẩm - Sticky
+.product-info-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%; // Đảm bảo full width
+  background: #ffffff; // Background trắng hoàn toàn
+  border: none;
+  border-bottom: 2px solid #d1d5db; // Đường gạch xám đậm duy nhất ở dưới
+  z-index: 999;
+  transition: box-shadow 0.3s ease; // Chỉ transition cho box-shadow
+  box-shadow: none; // Bỏ box-shadow mặc định
+  will-change: transform; // Tối ưu cho sticky positioning
+  
+  // Khi sticky được kích hoạt
+  &.scrolled {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    background: #fafafa; // Debug: màu khác khi scroll để test
+  }
+
+  .product-container {
+    width: 100%;
+    padding: 14px 40px; // Giảm padding để phù hợp với header ngắn hơn
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0; // Đảm bảo không có margin gây nhảy layout
+  }
+
+  .product-name {
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: -0.5px;
+      line-height: 1.3; // Tăng line-height để thoáng hơn
+    }
+  }
+
+  .product-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .price-label {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 2px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .price-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #4285f4;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #4285f4, #2d5aa0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+// Sticky behavior đã được tích hợp vào class chính ở trên
+
+// Responsive Design
+@media (max-width: 968px) {
+  .car-detail-header {
+    .header-container {
+      padding: 0 20px; // Giảm padding trên tablet
+      grid-template-columns: 1fr auto 1fr; // Vẫn giữ layout grid
+    }
+
+    .header-left {
+      .desktop-nav {
+        gap: 24px;
+
+        .nav-item {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .header-center {
+      .logo {
+        height: 40px;
+      }
+    }
+  }
+
+  .product-info-sticky {
+    .product-container {
+      padding: 12px 20px; // Giảm padding cho tablet để cân đối
+    }
+
+    .product-name {
+      h1 {
+        font-size: 26px;
+      }
+    }
+
+    .product-price {
+      .price-value {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .car-detail-header {
+    .header-container {
+      height: 55px; // Giảm chiều cao mobile từ 70px xuống 55px
+      grid-template-columns: auto 1fr auto; // Điều chỉnh cho mobile
+    }
+
+    .header-left {
+      .desktop-nav {
+        display: none; // Ẩn desktop nav
+      }
+
+      .mobile-menu-btn {
+        display: flex; // Hiện hamburger menu
+      }
+    }
+
+    .header-center {
+      .logo {
+        height: 38px;
+      }
+    }
+
+    .header-right {
+      .account-btn {
+        height: 36px;
+        padding: 0 8px;
+        font-size: 13px;
+
+        .anticon {
+          margin-right: 4px;
+          font-size: 14px;
+        }
+
+        .account-text {
+          display: none; // Ẩn text "Tài khoản" trên mobile
+        }
+      }
+    }
+  }
+
+  .product-info-sticky {
+    .product-container {
+      padding: 10px 15px; // Giảm padding mobile để cân đối
+    }
+
+    .product-name {
+      h1 {
+        font-size: 22px;
+        line-height: 1.2;
+      }
+    }
+
+    .product-price {
+      .price-label {
+        font-size: 11px;
+      }
+
+      .price-value {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .car-detail-header {
+    .header-container {
+      padding: 0 12px;
+    }
+
+    .header-center {
+      .logo {
+        height: 35px;
+      }
+    }
+
+    .header-right {
+      .account-btn {
+        height: 32px;
+        width: 32px;
+        padding: 0;
+        min-width: 32px;
+
+        .anticon {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .product-info-sticky {
+    .product-container {
+      padding: 8px 12px; // Giảm padding cho màn hình nhỏ
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .product-name {
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .product-price {
+      align-items: flex-start;
+      width: 100%;
+
+      .price-label {
+        font-size: 10px;
+      }
+
+      .price-value {
+        font-size: 18px;
+      }
+    }
+  }
+} 

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ChatBot from '../ChatBot/ChatBot';
 import { Typography, Button, Row, Col, Card, Space, Carousel, Divider } from 'antd';
 import { PlayCircleOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined, PhoneOutlined, MailOutlined, EnvironmentOutlined, FacebookOutlined, YoutubeOutlined, InstagramOutlined, ArrowUpOutlined } from '@ant-design/icons';
@@ -24,6 +25,7 @@ import './Home.scss';
 const { Title, Text, Paragraph } = Typography;
 
 const Home = () => {
+    const navigate = useNavigate();
     const carouselRef = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showScrollTop, setShowScrollTop] = useState(false);
@@ -246,6 +248,7 @@ const Home = () => {
                             <Title level={1} className="hero-title">
                                 VinFast: Mãnh liệt tinh thần Việt Nam
                             </Title>
+                            <Space size="large">
                                 <Button
                                     type="primary"
                                     size="large"
@@ -254,6 +257,15 @@ const Home = () => {
                             >
                                 Khám phá ngay
                             </Button>
+                                <Button
+                                    type="default"
+                                    size="large"
+                                    className="hero-button"
+                                    onClick={() => navigate('/vf7-detail')}
+                                >
+                                    VF7 Demo
+                                </Button>
+                            </Space>
                         </Space>
                     </div>
                 </div>
@@ -347,10 +359,31 @@ const Home = () => {
                             </Col>
                         </Row>
                         <div className="action-buttons">
-                            <Button type="primary" size="large" className="order-btn">
+                            <Button 
+                                type="primary" 
+                                size="large" 
+                                className="order-btn"
+                                onClick={() => {
+                                    if (carModels[currentSlide]?.name === 'VF 7') {
+                                        navigate('/vf7-detail');
+                                    } else {
+                                        navigate(`/car/vf9`);
+                                    }
+                                }}
+                            >
                                 ĐẶT CỌC
                             </Button>
-                            <Button size="large" className="details-btn">
+                            <Button 
+                                size="large" 
+                                className="details-btn"
+                                onClick={() => {
+                                    if (carModels[currentSlide]?.name === 'VF 7') {
+                                        navigate('/vf7-detail');
+                                    } else {
+                                        navigate(`/car/vf9/overview`);
+                                    }
+                                }}
+                            >
                                 XEM CHI TIẾT
                                 </Button>
                         </div>
@@ -429,6 +462,13 @@ const Home = () => {
                                             type="link" 
                                             className="explore-button"
                                             icon={<ArrowRightOutlined />}
+                                            onClick={() => {
+                                                if (model.name === 'VF 7') {
+                                                    navigate('/vf7-detail');
+                                                } else {
+                                                    navigate(`/car/vf9/overview`);
+                                                }
+                                            }}
                                         >
                                             Khám Phá
                                         </Button>

@@ -1,0 +1,102 @@
+.vf7-contact-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
+  color: white;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .contact-content {
+    .contact-text {
+      margin-bottom: 40px;
+
+      h3 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: white;
+      }
+
+      p {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+      }
+    }
+
+    .contact-form {
+      .registration-form {
+        .ant-form-item-label > label {
+          color: white;
+          font-weight: 500;
+        }
+
+        .ant-input,
+        .ant-select-selector {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          color: white;
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+          }
+
+          &:hover,
+          &:focus {
+            border-color: #007bff;
+            background: rgba(255, 255, 255, 0.15);
+          }
+        }
+
+        .ant-select-arrow {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .ant-btn-primary {
+          background: linear-gradient(45deg, #007bff, #0056b3);
+          border: none;
+          height: 48px;
+          font-size: 16px;
+          font-weight: 600;
+          border-radius: 8px;
+
+          &:hover {
+            background: linear-gradient(45deg, #0056b3, #004085);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+
+  .contact-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .contact-content {
+      .contact-text {
+        h3 {
+          font-size: 28px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+} 
