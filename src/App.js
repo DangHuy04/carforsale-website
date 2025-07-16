@@ -9,6 +9,7 @@ import CarDetail from './components/CarDetail/CarDetail';
 import CarOverview from './components/CarDetail/CarOverview';
 import VF7Detail from './components/CarDetail/VF7Detail';
 import './App.css';
+import ForgotPassword from './components/Login/ForgotPassword';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/car/:id/overview" element={<CarOverview />} />
             <Route path="/vf7-detail" element={<VF7Detail />} />
             <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/forgot-password" element={<ForgotPassword to="/" />} />
           </Routes>
         </BrowserRouter>
       </div>

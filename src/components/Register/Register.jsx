@@ -5,6 +5,7 @@ import { ArrowLeftOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser, faCheck } from '@fortawesome/free-solid-svg-icons';
 import logoVinFast from '../../assets/logov.svg';
+import { ToastContainer, toast } from 'react-toastify';
 import './Register.scss';
 
 const { Title, Text } = Typography;
@@ -16,16 +17,64 @@ const Register = () => {
 
     const onFinish = async (values) => {
         setLoading(true);
-        
-        // Giả lập API call
-        setTimeout(() => {
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            const userData = {
+                fullName: values.fullName,
+                email: values.email,
+                password: values.password,
+                isVerified: false,
+                createdAt: new Date().toISOString()
+            };
+
+            const existingUsers = localStorage.getItem('vinfast_users');
+            const users = existingUsers ? JSON.parse(existingUsers) : [];
+
+            if (users.some(user => user.email === userData.email)) {
+                throw new Error('Email đã được đăng ký!');
+            }
+
+            users.push(userData);
+            localStorage.setItem('vinfast_users', JSON.stringify(users));
+
+            toast.success(
+                <div>
+                    <p>Đăng ký thành công!</p>
+                    <p>Vui lòng kiểm tra email để xác nhận tài khoản.</p>
+                </div>,
+                {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                }
+            );
+
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
+        } catch (error) {
+            toast.error(error.message || 'Đăng ký thất bại! Vui lòng thử lại.', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        } finally {
             setLoading(false);
-            message.success('Đăng ký thành công!');
-            navigate('/login');
-        }, 1000);
+        }
     };
 
-    // Kiểm tra các yêu cầu mật khẩu
     const passwordRequirements = [
         {
             text: 'Ít nhất 8 ký tự',
@@ -43,6 +92,18 @@ const Register = () => {
 
     return (
         <div className="register-container">
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <Button
                 type="text"
                 icon={<ArrowLeftOutlined />}
@@ -143,8 +204,8 @@ const Register = () => {
                                     <div className="requirements-title">Mật khẩu bao gồm</div>
                                     {passwordRequirements.map((requirement, index) => (
                                         <div key={index} className={`requirement-item ${requirement.isValid ? 'valid' : 'invalid'}`}>
-                                            <FontAwesomeIcon 
-                                                icon={faCheck} 
+                                            <FontAwesomeIcon
+                                                icon={faCheck}
                                                 className={`check-icon ${requirement.isValid ? 'valid' : 'invalid'}`}
                                             />
                                             <span className="requirement-text">{requirement.text}</span>
@@ -208,4 +269,4 @@ const Register = () => {
     );
 };
 
-export default Register; 
+export default Register;
